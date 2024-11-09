@@ -1,0 +1,24 @@
+plugins{
+    id 'java'
+    id 'application'
+}
+
+
+
+application {
+    mainClass = "org.example.Main"
+}
+jar {
+    manifest {
+        attributes(
+                "Main-Class": application.mainClass
+        )
+    }
+}
+repositories {
+    mavenCentral()
+}
+tasks.withType(JavaExec).configureEach {
+    standardInput = System.in
+    standardOutput = System.out
+}
